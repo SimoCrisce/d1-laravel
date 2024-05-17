@@ -1,11 +1,13 @@
 <?php
 
-use App\Http\Controllers\CrudController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PageController;
 
-Route::get('/', [CrudController::class, 'home'])->name('home');
-Route::get('/add', [CrudController::class, 'add'])->name('add');
-Route::get('/delete/{id}', [CrudController::class, 'delete'])->name('delete');
-Route::get('/update/{id}', [CrudController::class, 'update'])->name('update');
-Route::get('/get/{id}', [CrudController::class, 'getSingle'])->name('getSingle');
-Route::get('/get/{id}', [CrudController::class, 'get'])->name('get');
+Route::get('/', [PageController::class, 'home'])->name('home');
+
+
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/product/add', [ProductController::class, 'add'])->name('product.add');
+Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
